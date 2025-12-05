@@ -20,7 +20,7 @@ The Excel model in this project includes:
 4. Discounted those cash flows to the present using WACC to estimate intrinsic value.
 5. Compared the intrinsic value to NVIDIA’s current market valuation.
 
-**Reason for Selecting NVIDIA**
+**Why I Built This**
 
 NVIDIA is a major company in the semiconductor and AI industry. Its rapid growth and significant market attention make it a relevant example for applying the DCF approach and evaluating whether current pricing reflects fundamental performance.
 
