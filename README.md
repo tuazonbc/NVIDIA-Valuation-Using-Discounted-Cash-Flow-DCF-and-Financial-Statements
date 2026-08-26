@@ -1,29 +1,33 @@
-**NVIDIA DCF Valuation Project**
+# NVIDIA DCF Valuation Project
 
-This repository contains a valuation of NVIDIA Corporation using a Discounted Cash Flow (DCF) model. The goal of this project was to estimate the intrinsic value of NVIDIA based on projected future cash flows and compare that value to the company’s current market price.
+This repository contains a valuation of NVIDIA Corporation using a Discounted Cash Flow (DCF) model. The goal of this project was to estimate the intrinsic value of NVIDIA based on projected future cash flows and compare that value to the company's current market price.
 
-**Features**
+## Features
 
 The Excel model in this project includes:
 
-- Historical financial statements
-- Projections for revenue, operating expenses, and net income
-- A three-statement model (income statement, balance sheet, and cash flow statement)
-- Free Cash Flow (FCF) calculations
-- A Discounted Cash Flow valuation using an estimated Weighted Average Cost of Capital (WACC)
+* Historical financial statements
+* Projections for revenue, operating expenses, and net income
+* A three statement model (income statement, balance sheet, and cash flow statement)
+* Free Cash Flow (FCF) calculations
+* A Discounted Cash Flow valuation using an estimated Weighted Average Cost of Capital (WACC)
 
-**How It Works**
+## How It Works
 
-1. Analyzed NVIDIA’s historical financial performance to establish assumptions for future growth and margins.
+1. Analyzed NVIDIA's historical financial performance to establish assumptions for future growth and margins.
 2. Built projected financial statements based on those assumptions.
 3. Calculated future Free Cash Flows.
 4. Discounted those cash flows to the present using WACC to estimate intrinsic value.
-5. Compared the intrinsic value to NVIDIA’s current market valuation.
+5. Compared the intrinsic value to NVIDIA's current market valuation.
 
-**Why I Built This**
+## Why I Built This
 
 NVIDIA is a major company in the semiconductor and AI industry. Its rapid growth and significant market attention make it a relevant example for applying the DCF approach and evaluating whether current pricing reflects fundamental performance.
 
-**Insights Gained**
+## Model Review
 
-This project demonstrates how a DCF model can be used to estimate a company’s intrinsic value. The valuation results depend heavily on assumptions such as revenue growth, cost structure, and discount rates. Small changes to these inputs can materially impact the intrinsic value, so the final number should be interpreted as a range rather than a precise figure.
+After completing the first version of the model, the result looked too high, so I went back through every formula and checked it against the numbers in NVIDIA's actual financial statements. This review found and fixed several errors, including a share count that had not been updated for NVIDIA's stock split, an incorrect cash and debt calculation, and a couple of broken formulas that were feeding wrong numbers into later parts of the model. Working through these fixes was a good exercise in checking a model's logic instead of just trusting the output.
+
+## Insights Gained
+
+This project demonstrates how a DCF model can be used to estimate a company's intrinsic value. The valuation results depend heavily on assumptions such as revenue growth, cost structure, and discount rates. Small changes to these inputs can materially impact the intrinsic value, so the final number should be interpreted as a range rather than a precise figure. It also showed me how easily an error in one part of a model can carry through to the final result, which is why checking the work matters as much as building it.
