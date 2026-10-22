@@ -1,33 +1,80 @@
-# NVIDIA DCF Valuation Project
+# NVIDIA (NVDA) | Discounted Cash Flow Valuation
 
-This repository contains a valuation of NVIDIA Corporation using a Discounted Cash Flow (DCF) model. The goal of this project was to estimate the intrinsic value of NVIDIA based on projected future cash flows and compare that value to the company's current market price.
+**Valuation date:** November 12, 2025  
+**Currency:** USD  
+**Method:** Discounted Cash Flow (DCF), using projected free cash flow to the firm (FCFF)
 
-## Features
+## Project Overview
 
-The Excel model in this project includes:
+This project evaluates NVIDIA Corporation's estimated intrinsic equity value using historical financial statements, projected operating performance, a weighted average cost of capital (WACC), and a terminal value calculation. It also examines how changes in long-term growth and discount rates affect the implied share price.
 
-* Historical financial statements
-* Projections for revenue, operating expenses, and net income
-* A three statement model (income statement, balance sheet, and cash flow statement)
-* Free Cash Flow (FCF) calculations
-* A Discounted Cash Flow valuation using an estimated Weighted Average Cost of Capital (WACC)
+The analysis is a **historical, assumptions-based valuation as of November 12, 2025**, not a forecast made using information available today.
 
-## How It Works
+## Valuation Summary
 
-1. Analyzed NVIDIA's historical financial performance to establish assumptions for future growth and margins.
-2. Built projected financial statements based on those assumptions.
-3. Calculated future Free Cash Flows.
-4. Discounted those cash flows to the present using WACC to estimate intrinsic value.
-5. Compared the intrinsic value to NVIDIA's current market valuation.
+| Metric | Estimate |
+| --- | ---: |
+| Reference market price (model input) | $193.80 |
+| Conservative-case implied share price | Approximately $69.18 |
+| Implied downside versus reference price | Approximately 64.3% |
+| WACC | 13.78% |
+| Perpetual growth rate | 3.50% |
+| Projected FY2030 revenue | Approximately $377 billion |
+| Projected FY2030 free cash flow | Approximately $179.55 billion |
 
-## Why I Built This
+**Interpretation:** Under the model's conservative growth and discount-rate assumptions, estimated intrinsic value is substantially below the reference market price. This is a **scenario outcome**, not proof that NVIDIA was mispriced by 64.3%.
 
-NVIDIA is a major company in the semiconductor and AI industry. Its rapid growth and significant market attention make it a relevant example for applying the DCF approach and evaluating whether current pricing reflects fundamental performance.
+## Valuation Methodology
 
-## Model Review
+The model forecasts free cash flow to the firm:
 
-After completing the first version of the model, the result looked too high, so I went back through every formula and checked it against the numbers in NVIDIA's actual financial statements. This review found and fixed several errors, including a share count that had not been updated for NVIDIA's stock split, an incorrect cash and debt calculation, and a couple of broken formulas that were feeding wrong numbers into later parts of the model. Working through these fixes was a good exercise in checking a model's logic instead of just trusting the output.
+```text
+FCFF = EBIT × (1 − Tax Rate) + Depreciation & Amortization
+       − Capital Expenditures − Change in Net Working Capital
+```
 
-## Insights Gained
+Forecast FCFF is discounted at WACC. Terminal value is estimated using perpetual growth:
 
-This project demonstrates how a DCF model can be used to estimate a company's intrinsic value. The valuation results depend heavily on assumptions such as revenue growth, cost structure, and discount rates. Small changes to these inputs can materially impact the intrinsic value, so the final number should be interpreted as a range rather than a precise figure. It also showed me how easily an error in one part of a model can carry through to the final result, which is why checking the work matters as much as building it.
+```text
+Terminal Value = Final Forecast FCFF × (1 + g) / (WACC − g)
+```
+
+Enterprise value is the sum of the present value of forecast-period cash flows and terminal value. Equity value is calculated by adding cash and subtracting debt, then divided by the assumed diluted share count to estimate intrinsic value per share.
+
+## Key Assumptions and Interpretation
+
+- **WACC (13.78%):** A relatively high discount rate that materially reduces the present value of future cash flows. The underlying beta and equity risk premium are model assumptions and should not be described as independently verified estimates.
+- **Long-term growth (3.50%):** A perpetual growth assumption, not NVIDIA management guidance.
+- **Revenue trajectory:** The model assumes growth slows considerably by FY2030. This is an important reason the valuation is below some published analyst estimates.
+- **Profitability and cash conversion:** Forecast operating margins, reinvestment, and working capital determine how projected revenue becomes free cash flow.
+
+## Growth Comparison
+
+An additional **Growth Comparison** worksheet illustrates a higher-free-cash-flow scenario using an external FY2030 benchmark of approximately **$249.21 billion**, versus approximately **$179.55 billion** in the original forecast. This comparison is a sensitivity exercise: it is **not** a complete independently constructed operating forecast and should not be interpreted as a directly comparable replication of another analyst's DCF.
+
+Different published valuations may use different forecast horizons, cash-flow definitions (FCFF versus FCFE), discount rates, terminal assumptions, and share counts. Their implied prices should not be compared without considering those differences.
+
+## Workbook Contents
+
+The Excel workbook includes financial statement analysis, forecast assumptions, DCF calculations, and sensitivity or comparison analyses. Review the worksheets for the full model and formula detail.
+
+## Sources and Research
+
+Primary sources to consult for the historical valuation include:
+
+- [NVIDIA Investor Relations — Financial Information](https://investor.nvidia.com/financial-info/financial-reports-and-sec-filings/default.aspx)
+- [NVIDIA SEC filings](https://www.sec.gov/edgar/browse/?CIK=1045810&owner=exclude)
+- [U.S. Treasury — Interest Rate Statistics](https://home.treasury.gov/resource-center/data-chart-center/interest-rates)
+- [Damodaran Online — Data](https://pages.stern.nyu.edu/~adamodar/)
+
+Sources listed here are research references. Not every historical input, beta estimate, equity risk premium, or forecast has been independently reconciled to its source. The valuation date should be respected when evaluating what information was available at the time.
+
+## Limitations
+
+This is an educational financial modeling project, **not an independently audited equity research report**. Its results depend on uncertain forecasts, including AI infrastructure demand, revenue growth, operating margins, reinvestment, and long-run cash flow. The base-case model is best understood as a **conservative scenario**. The model's approximate $69.18 value is not an objectively established fair value or a current price target.
+
+Before relying on any output, open the workbook in Excel, recalculate formulas, and confirm that the displayed implied share price and sensitivity tables reflect the same assumptions.
+
+## Disclaimer
+
+For educational and portfolio purposes only. This project is not investment advice or a recommendation to buy or sell NVIDIA shares.
